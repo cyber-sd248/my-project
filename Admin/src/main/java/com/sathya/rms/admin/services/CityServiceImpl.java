@@ -36,5 +36,12 @@ public class CityServiceImpl implements CityService {
 	public void deleteCity(Integer id) {
 		cityRepository.deleteById(id);
 	}
+    
+	@Transactional
+	@Override
+	public City addNewCity(City city) {
+		// TODO Auto-generated method stub
+		return cityRepository.save(city);
+	}
 	
 }

@@ -43,8 +43,9 @@ public class CityController {
 		City result=null;
 		try {
 			Optional<State> ost=stateService.findByStId(city.getStId());
-			city.setState(ost.get());
+			
 			if(ost.get()==null)throw new Exception("Invalid state id");
+			city.setState(ost.get());
 					result=cityService.addCity(city);
 					logger.debug("Result is {0}",result);
 		
@@ -63,6 +64,14 @@ public class CityController {
 	@DeleteMapping(path="/deleteCity/{id}")
 	public void deleteCity(@PathVariable("id") Integer id) {
 	     cityService.deleteCity(id);
+	}
+	
+	@PostMapping(path="/addNewCity")
+	public City addNewCity(@RequestBody City city) {
+		
+	      Optional<State> state=stateService.findByStId(city.getStId());
+		  city.setState(state.get());
+	      return cityService.addNewCity(city);
 	}
 
 }

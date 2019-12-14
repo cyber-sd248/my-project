@@ -15,7 +15,6 @@ public class StateServiceImpl implements StateService {
 	@Autowired
 	public StateRepository stateRepository;
 
-	@Override
 	public Iterable<State> getAllStates() {
 
 		return stateRepository.findAll();
@@ -23,23 +22,20 @@ public class StateServiceImpl implements StateService {
 	
 
 	@Transactional
-	@Override
 	public State insertState(State state) {
 		return stateRepository.save(state);
 	}
     @Transactional
-    @Override
 	public State updateState(State state) {
 		return stateRepository.save(state);
 	}
     @Transactional
-    @Override
     public void deleteState(Integer id) {
     	 stateRepository.deleteById(id);
     }
 
     @Transactional
-    @Override
+ 
 	public Optional<State> findByStId(String stId) {
 		return stateRepository.findByStId(stId);
 	}

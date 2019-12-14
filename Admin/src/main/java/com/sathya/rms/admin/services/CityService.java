@@ -12,4 +12,6 @@ public interface CityService {
 	public City updateCity(City city);
 
 	public void deleteCity(Integer id);
+	
+	public City addNewCity(City city);
 }

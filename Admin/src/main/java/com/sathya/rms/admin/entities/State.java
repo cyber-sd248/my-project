@@ -1,10 +1,12 @@
 package com.sathya.rms.admin.entities;
 
-import javax.persistence.Column;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,9 +16,10 @@ public class State {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;	
-	@Column(unique=true, nullable=false)
 	private String stId;
 	private String stName;
+	@OneToMany(mappedBy="state")
+	private Set<City> cities;
 		
 	public Integer getId() {
 		return id;

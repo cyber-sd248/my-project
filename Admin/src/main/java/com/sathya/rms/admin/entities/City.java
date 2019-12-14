@@ -17,11 +17,11 @@ public class City {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String cId;
-	private String cName;
-	@Transient	
+	private String cName; 
+	@Transient
 	private String stId;
 	@ManyToOne
-	@JoinColumn(name="st_id", nullable=false)
+	@JoinColumn(name="st_id")
 	private State state;
 	
 	public Integer getId() {
