@@ -28,7 +28,7 @@ public class StateController {
 
 		logger.info("get all States method execution started");
 		
-		Iterable<State> result = null;
+		Iterable<State> result=null;
 		try {
 			result = stateService.getAllStates();
 			logger.debug("result is {0}", result);

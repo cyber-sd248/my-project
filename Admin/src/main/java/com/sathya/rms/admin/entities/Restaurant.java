@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Restaurant {
@@ -17,9 +18,9 @@ public class Restaurant {
 	private Long Phno;
 	
 	private String Email;
-	
-	private String locId;
 
+	private String locId;
+    
 	public Integer getId() {
 		return id;
 	}

@@ -1,5 +1,7 @@
 package com.sathya.rms.admin.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +41,13 @@ public class CityServiceImpl implements CityService {
     
 	@Transactional
 	@Override
-	public City addNewCity(City city) {
-		// TODO Auto-generated method stub
+	public City addNewCity(City city) {		
 		return cityRepository.save(city);
+	}
+
+	@Override
+	public Optional<City> findBycId(String cId) {
+		return cityRepository.findBycId(cId);
 	}
 	
 }

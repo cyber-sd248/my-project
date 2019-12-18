@@ -22,7 +22,7 @@ import com.sathya.rms.admin.services.StateService;
 @RestController
 @RequestMapping(path="/cities")
 public class CityController {
-	private static final Logger logger=LogManager.getLogger(CityController.class);
+	private static final Logger LOGGER_0=LogManager.getLogger(CityController.class);
 	
 	@Autowired
 	CityService cityService;
@@ -37,22 +37,22 @@ public class CityController {
 	
 	@PostMapping(path="/addCity")
 	 public City addCity(@RequestBody City city) {
-		logger.info("addCity method execution started");
-		logger.debug("input data is {0}",city);
+		LOGGER_0.info("addCity method execution started");
+		LOGGER_0.debug("input data is {0}",city);
 		
-		City result=null;
+		City result = null;
 		try {
 			Optional<State> ost=stateService.findByStId(city.getStId());
 			
-			if(ost.get()==null)throw new Exception("Invalid state id");
+			if(ost.get()== null) throw new Exception("Invalid state id");
 			city.setState(ost.get());
 					result=cityService.addCity(city);
-					logger.debug("Result is {0}",result);
-		
-		}catch(Exception e) {
-		logger.error("Exception happend and exception is");	
+					LOGGER_0.debug("Result is {0}",result);
+				}
+		catch(Exception e) {
+		LOGGER_0.error("Exception happend and exception is");	
 		}
-		logger.info("getAllCities method execution completed");
+		LOGGER_0.info("getAllCities method execution completed");
 		return result;
 	}
 	
