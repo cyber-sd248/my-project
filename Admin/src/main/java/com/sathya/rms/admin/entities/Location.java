@@ -23,6 +23,7 @@ public class Location{
 	@Column(name="C_ID")
 	@Transient
 	private String cId;
+	
 	@OneToOne
 	@JoinColumn(name="c_id")
 	private City cities;

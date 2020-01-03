@@ -1,7 +1,5 @@
 package com.sathya.rms.entities;
 
-import java.sql.Blob;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +16,7 @@ public class Items {
 	private String iId;
 	private String iName;
 	private Long iPrice;
-	private Blob iPic;
+	private String iPic;
 	@Transient
 	private String gId;
 
@@ -50,10 +48,10 @@ public class Items {
 	public void setiPrice(Long iPrice) {
 		this.iPrice = iPrice;
 	}
-	public Blob getiPic() {
+	public String getiPic() {
 		return iPic;
 	}
-	public void setiPic(Blob iPic) {
+	public void setiPic(String iPic) {
 		this.iPic = iPic;
 	}
 	public String getgId() {

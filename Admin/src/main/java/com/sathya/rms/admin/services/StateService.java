@@ -10,6 +10,7 @@ public interface StateService {
 	public State insertState(State state);
 	public State updateState(State state);
 	public void deleteState(Integer id);
+	
 	public Optional<State> findByStId(String stId);
 	
 }

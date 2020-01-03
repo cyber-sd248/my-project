@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
-@RequestMapping(path="/roles")
-
 public class Designation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -18,6 +18,7 @@ public class State {
 	private Integer id;	
 	private String stId;
 	private String stName;
+	
 	@OneToMany(mappedBy="state")
 	private Set<City> cities;
 		
