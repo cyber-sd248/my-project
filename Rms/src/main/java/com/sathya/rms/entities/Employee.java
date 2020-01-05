@@ -14,7 +14,7 @@ public class Employee {
 	
 	private String eId;
 	private String eName;
-	private Integer esalary;
+	private Integer eSalary;
 	private Integer ePhno;
 	private String desigId;
 	private String rId;
@@ -37,11 +37,11 @@ public class Employee {
 	public void seteName(String eName) {
 		this.eName = eName;
 	}
-	public Integer getEsalary() {
-		return esalary;
+	public Integer geteSalary() {
+		return eSalary;
 	}
-	public void setEsalary(Integer esalary) {
-		this.esalary = esalary;
+	public void seteSalary(Integer eSalary) {
+		this.eSalary = eSalary;
 	}
 	public Integer getePhno() {
 		return ePhno;
@@ -61,11 +61,14 @@ public class Employee {
 	public void setrId(String rId) {
 		this.rId = rId;
 	}
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", eId=" + eId + ", eName=" + eName + ", eSalary=" + esalary + ", ePhno=" + ePhno
+		return "Employee [id=" + id + ", eId=" + eId + ", eName=" + eName + ", eSalary=" + eSalary + ", ePhno=" + ePhno
 				+ ", desigId=" + desigId + ", rId=" + rId + "]";
 	}
+	
+	
 	
 	
 	

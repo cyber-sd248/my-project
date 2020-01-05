@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import com.sathya.rms.services.ItemsService;
 
 @RestController
 @RequestMapping(path="/items")
+@CrossOrigin
 public class ItemsController {
 	public static final Logger logger=LogManager.getLogger(ItemsController.class); 
 	

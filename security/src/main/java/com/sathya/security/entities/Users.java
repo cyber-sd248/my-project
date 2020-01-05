@@ -1,10 +1,7 @@
 package com.sathya.security.entities;
 
-import java.sql.Blob;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,14 +36,13 @@ public class Users{
 	
 	private String country;
 	
-	private String State;
+	private String state;
 	
-	private String Zip;
+	private String zip;
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date CreatedOn;
 	private String role;
-	private Blob avatar;
-	
+	private String avatar;
 	public Integer getId() {
 		return id;
 	}
@@ -108,21 +104,21 @@ public class Users{
 		this.country = country;
 	}
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	public String getZip() {
-		return Zip;
+		return zip;
 	}
 	public void setZip(String zip) {
-		Zip = zip;
+		this.zip = zip;
 	}
 	public Date getCreatedOn() {
 		return CreatedOn;
 	}
-	public void setCreatedOn(Timestamp createdOn) {
+	public void setCreatedOn(Date createdOn) {
 		CreatedOn = createdOn;
 	}
 	public String getRole() {
@@ -131,23 +127,23 @@ public class Users{
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Blob getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
-	public void setAvatar(Blob avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", emailId=" + emailId
-				+ ", phnoNo=" + phnoNo + ", fristName=" + firstName + ", lastName=" + lastName + ", address1="
-				+ address1 + ", address2=" + address2 + ", country=" + country + ", State=" + State + ", Zip=" + Zip
+				+ ", phnoNo=" + phnoNo + ", firstName=" + firstName + ", lastName=" + lastName + ", address1="
+				+ address1 + ", address2=" + address2 + ", country=" + country + ", state=" + state + ", zip=" + zip
 				+ ", CreatedOn=" + CreatedOn + ", role=" + role + ", avatar=" + avatar + "]";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(CreatedOn, State, Zip, address1, address2, country, emailId, firstName, id, lastName,
-				password, phnoNo, role, username);
+		return Objects.hash(CreatedOn, address1, address2, avatar, country, emailId, firstName, id, lastName, password,
+				phnoNo, role, state, username, zip);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -158,13 +154,15 @@ public class Users{
 		if (getClass() != obj.getClass())
 			return false;
 		Users other = (Users) obj;
-		return Objects.equals(CreatedOn, other.CreatedOn) && Objects.equals(State, other.State)
-				&& Objects.equals(Zip, other.Zip) && Objects.equals(address1, other.address1)
-				&& Objects.equals(address2, other.address2) && Objects.equals(country, other.country)
-				&& Objects.equals(emailId, other.emailId) && Objects.equals(firstName, other.firstName)
-				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName)
-				&& Objects.equals(password, other.password) && Objects.equals(phnoNo, other.phnoNo)
-				&& Objects.equals(role, other.role) && Objects.equals(username, other.username);
+		return Objects.equals(CreatedOn, other.CreatedOn) && Objects.equals(address1, other.address1)
+				&& Objects.equals(address2, other.address2) && Objects.equals(avatar, other.avatar)
+				&& Objects.equals(country, other.country) && Objects.equals(emailId, other.emailId)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
+				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
+				&& Objects.equals(phnoNo, other.phnoNo) && Objects.equals(role, other.role)
+				&& Objects.equals(state, other.state) && Objects.equals(username, other.username)
+				&& Objects.equals(zip, other.zip);
 	}
+	
 	
 }

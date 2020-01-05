@@ -1,6 +1,7 @@
 package com.sathya.rms.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import com.sathya.rms.services.UsersService;
 
 @RestController
 @RequestMapping(path="/users")
+@CrossOrigin
 public class UsersController {
 
 	@Autowired
@@ -26,7 +28,7 @@ public class UsersController {
 	}
 	
 	@GetMapping(path="/getAllUsers")
-	public Iterable<Users> getAllUsers(@RequestBody Users users) {
+	public Iterable<Users> getAllUsers() {
 		return usersService.getAllUsers();
 	}
 	

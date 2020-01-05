@@ -14,22 +14,21 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String rId;
+	private String gId;
 	private String iId;
 	@Temporal(value=TemporalType.DATE)
 	private Date mdate;
-	
 	public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getrId() {
-		return rId;
+	public String getgId() {
+		return gId;
 	}
-	public void setrId(String rId) {
-		this.rId = rId;
+	public void setgId(String gId) {
+		this.gId = gId;
 	}
 	public String getiId() {
 		return iId;
@@ -45,7 +44,7 @@ public class Menu {
 	}
 	@Override
 	public String toString() {
-		return "Menu [id=" + id + ", rId=" + rId + ", iId=" + iId + ", mdate=" + mdate + "]";
+		return "Menu [id=" + id + ", gId=" + gId + ", iId=" + iId + ", mdate=" + mdate + "]";
 	}
 	
 }
