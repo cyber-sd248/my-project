@@ -45,7 +45,5 @@ public class State {
 	public void setStName(String stName) {
 		this.stName = stName;
 	}
-
-
 	
 }
