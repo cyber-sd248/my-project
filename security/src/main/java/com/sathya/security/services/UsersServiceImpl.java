@@ -1,5 +1,7 @@
 package com.sathya.security.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,26 +17,30 @@ public class UsersServiceImpl implements UsersService {
 	
 	
 	public Iterable<Users> getAllUsers() {
-		// TODO Auto-generated method stub
 		return usersRepository.findAll();
 	}
 
 	@Transactional
 	public Users addUser(Users users) {
-		// TODO Auto-generated method stub
 		return usersRepository.save(users);
 	}
 
 	@Transactional
-	public Users UpdateUser(Users users) {
-		// TODO Auto-generated method stub
+	public Users updateUser(Users users) {
 		return usersRepository.save(users);
 	}
 
 	@Transactional
 	public void deleteUser(Integer id) {
-		// TODO Auto-generated method stub
 		usersRepository.deleteById(id);
 	}
 
+	public Users login(String username, String password) {
+		return usersRepository.findByUsernameAndPassword(username, password);
+	}
+
+	/*
+	 * public Optional<Users> findByRoleId(String roleId) { return
+	 * usersRepository.findByRoleId(roleId); }
+	 */
 }

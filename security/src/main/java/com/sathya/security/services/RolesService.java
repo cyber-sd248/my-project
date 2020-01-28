@@ -10,5 +10,5 @@ public interface RolesService {
 	public Roles addRole(Roles role);
 	public Roles updateRole(Roles role);
 	public void deleteRole(Integer id);
-	public Optional<Roles> findByRoleId(Integer roleId);
+	//public Optional<Roles> findByRoleName(String roleName);
 }

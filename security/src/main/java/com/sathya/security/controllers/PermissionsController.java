@@ -24,43 +24,39 @@ import com.sathya.security.services.RolesService;
 @RequestMapping(path="/permissions")
 @CrossOrigin
 public class PermissionsController {
-	
+
 	private static final Logger logger=LogManager.getLogger(PermissionsController.class);
-	
+
 	@Autowired
 	PermissionsService permissionsService;
-	
+
 	@Autowired
 	RolesService rolesService;
-	
-    @GetMapping(path="/getAllPermissions")
+
+	@GetMapping(path="/getAllPermissions")
 	public Iterable<Permissions> getAllPermissions(){
-		return permissionsService.getAllPermissions();
-	}
-	
-	@PostMapping(path="/addPermissions")
-	public Permissions addPermissions(@RequestBody Permissions permission) {
-		logger.info("addPermissions method execution started");
-		logger.debug("input data is {0}",permission);
-		
-		Permissions result=null;
-		try {		
-		Optional<Roles> rls=rolesService.findByRoleId(permission.getRoleId());
-		if(rls.get() == null)throw new Exception("invalid roledId is"); 
-			permission.setRoles(rls.get());
-			result=permissionsService.addPermissions(permission);
-		}catch(Exception e) {
-			logger.error("Exception is happens and exception is {0}",e);
+		logger.info("getAllPermissions method execution started");
+		Iterable<Permissions> result=null;
+		try {
+			result=permissionsService.getAllPermissions();
+			logger.debug("Result is {0}",result);
+		}catch(Exception e){
+			logger.error("Exception happens and Exception info is {0}",e);
 		}
-		logger.info("addPermissions method execution is completed");
+		logger.info("getAllPermissions method execution completed");
 		return result;
 	}
-	
+
+	@PostMapping(path="/addPermissions")
+	public Permissions addPermissions(@RequestBody Permissions permission) {		
+		return permissionsService.addPermissions(permission);
+	}
+
 	@PutMapping(path="/updatePermissions")
 	public Permissions updatePermissions(@RequestBody Permissions permission) {
 		return permissionsService.updatePermissions(permission);
 	}
-	
+
 	@DeleteMapping(path="/deletePermissions/{permissionId}")
 	public void deletePermission(@PathVariable ("permissionId") Integer permissionId) {
 		permissionsService.deletePermission(permissionId);

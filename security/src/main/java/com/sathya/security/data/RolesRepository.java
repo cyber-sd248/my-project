@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.sathya.security.entities.Roles;
 
 public interface RolesRepository extends CrudRepository<Roles, Integer> {
-	public Optional<Roles> findByRoleId(Integer roleId);
+	//public Optional<Roles> findByRoleName(String roleName);
 
 }

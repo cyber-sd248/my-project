@@ -1,25 +1,51 @@
 package com.sathya.security.entities;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
-public class Roles{
+public class Roles implements Serializable{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer roleId;
+	private Integer id;
+	private String roleId;
 	private String roleName;
 	private String roleDescription;
-		
-	public Integer getRoleId() {
+	
+	@Transient
+	private String permissionId;	
+	@OneToMany
+	@JoinColumn(name="p_id")
+	private Set<Permissions> permissions;
+	public Roles() {
+		super();
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Integer roleId) {
+	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
 
@@ -39,15 +65,26 @@ public class Roles{
 		this.roleDescription = roleDescription;
 	}
 
+	public String getPermissionId() {
+		return permissionId;
+	}
 
-	@Override
-	public String toString() {
-		return "Roles [roleId=" + roleId + ", roleName=" + roleName + ", roleDescription=" + roleDescription + "]";
+	public void setPermissionId(String permissionId) {
+		this.permissionId = permissionId;
+	}
+	
+
+	public Set<Permissions> getPermissions() {
+		return permissions;
+	}
+
+	public void setPermissions(Set<Permissions> permissions) {
+		this.permissions = permissions;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(roleDescription, roleId, roleName);
+		return Objects.hash(id, permissionId, permissions, roleDescription, roleId, roleName);
 	}
 
 	@Override
@@ -59,9 +96,16 @@ public class Roles{
 		if (getClass() != obj.getClass())
 			return false;
 		Roles other = (Roles) obj;
-		return Objects.equals(roleDescription, other.roleDescription) && Objects.equals(roleId, other.roleId)
+		return Objects.equals(id, other.id) && Objects.equals(permissionId, other.permissionId)
+				&& Objects.equals(permissions, other.permissions)
+				&& Objects.equals(roleDescription, other.roleDescription) && Objects.equals(roleId, other.roleId)
 				&& Objects.equals(roleName, other.roleName);
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Roles [id=" + id + ", roleId=" + roleId + ", roleName=" + roleName + ", roleDescription="
+				+ roleDescription + ", permissionId=" + permissionId + ", permissions=" + permissions + "]";
+	}	
+		
 }

@@ -1,22 +1,33 @@
 package com.sathya.security.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="USERS")
-public class Users{
+public class Users implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@Column(name="USERID")
+	private String uId;
 	
 	private String username;
 	
@@ -40,9 +51,21 @@ public class Users{
 	
 	private String zip;
 	@Temporal(value=TemporalType.TIMESTAMP)
-	private Date CreatedOn;
-	private String role;
+	private Date createdOn;
+	private String uRole;	
 	private String avatar;
+	
+	@Transient
+	private String roleName;
+	@OneToOne
+	private Roles roles;
+    
+	public String getuId() {
+		return uId;
+	}
+	public void setuId(String uId) {
+		this.uId = uId;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -116,16 +139,23 @@ public class Users{
 		this.zip = zip;
 	}
 	public Date getCreatedOn() {
-		return CreatedOn;
+		return createdOn;
 	}
 	public void setCreatedOn(Date createdOn) {
-		CreatedOn = createdOn;
+		this.createdOn = createdOn;
 	}
-	public String getRole() {
-		return role;
+	
+	public String getuRole() {
+		return uRole;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setuRole(String uRole) {
+		this.uRole = uRole;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 	public String getAvatar() {
 		return avatar;
@@ -133,36 +163,21 @@ public class Users{
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
+	public Roles getRoles() {
+		return roles;
+	}
+	public void setRoles(Roles roles) {
+		this.roles = roles;
+	}
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", emailId=" + emailId
-				+ ", phnoNo=" + phnoNo + ", firstName=" + firstName + ", lastName=" + lastName + ", address1="
+		return "Users [id=" + id + ", uId=" + uId + ", username=" + username + ", password=" + password + ", emailId="
+				+ emailId + ", phnoNo=" + phnoNo + ", firstName=" + firstName + ", lastName=" + lastName + ", address1="
 				+ address1 + ", address2=" + address2 + ", country=" + country + ", state=" + state + ", zip=" + zip
-				+ ", CreatedOn=" + CreatedOn + ", role=" + role + ", avatar=" + avatar + "]";
+				+ ", createdOn=" + createdOn + ", uRole=" + uRole + ", avatar=" + avatar + ", roleName=" + roleName
+				+ ", roles=" + roles + "]";
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(CreatedOn, address1, address2, avatar, country, emailId, firstName, id, lastName, password,
-				phnoNo, role, state, username, zip);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Users other = (Users) obj;
-		return Objects.equals(CreatedOn, other.CreatedOn) && Objects.equals(address1, other.address1)
-				&& Objects.equals(address2, other.address2) && Objects.equals(avatar, other.avatar)
-				&& Objects.equals(country, other.country) && Objects.equals(emailId, other.emailId)
-				&& Objects.equals(firstName, other.firstName) && Objects.equals(id, other.id)
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(phnoNo, other.phnoNo) && Objects.equals(role, other.role)
-				&& Objects.equals(state, other.state) && Objects.equals(username, other.username)
-				&& Objects.equals(zip, other.zip);
-	}
+	
 	
 	
 }

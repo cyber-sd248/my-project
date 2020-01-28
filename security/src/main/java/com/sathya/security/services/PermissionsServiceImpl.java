@@ -1,5 +1,7 @@
 package com.sathya.security.services;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,26 +18,27 @@ public class PermissionsServiceImpl implements PermissionsService {
 	
 	
 	public Iterable<Permissions> getAllPermissions() {
-		// TODO Auto-generated method stub
 		return permissionsRepo.findAll();
 	}
 
 	@Transactional
 	public Permissions addPermissions(Permissions permission) {
-		// TODO Auto-generated method stub
 		return permissionsRepo.save(permission);
 	}
 
 	@Transactional
 	public Permissions updatePermissions(Permissions permission) {
-		// TODO Auto-generated method stub
 		return permissionsRepo.save(permission);
 	}
 
 	@Transactional
 	public void deletePermission(Integer permissionId) {
-		// TODO Auto-generated method stub
 		permissionsRepo.deleteById(permissionId);
 	}
+
+	/*
+	 * @Override public Optional<Permissions> findByPermissionId(String
+	 * permissionId) { return permissionsRepo.findByPermissionId(permissionId); }
+	 */
 
 }
