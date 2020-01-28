@@ -37,7 +37,7 @@ public class OrdermasterController {
 		return ordermasterService.updateOrder(ordmr);
 	}
 	
-	@DeleteMapping(path="/deleteOrder")
+	@DeleteMapping(path="/deleteOrder/{id}")
 	public void deleteOrder(@PathVariable("id") Integer id) {
 		ordermasterService.deleteOrder(id);
 	}

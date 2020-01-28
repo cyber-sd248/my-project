@@ -37,7 +37,7 @@ public class FeedbackController {
     	return feedbackService.updateFeedback(feedback);
     }
     
-    @DeleteMapping(path="/deleteFeedback")
+    @DeleteMapping(path="/deleteFeedback/{id}")
     public void deleteFeedback(@PathVariable("id") Integer id) {
     	 feedbackService.deleteFeedback(id);
     }

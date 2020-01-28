@@ -59,7 +59,7 @@ public class ItemsController {
 	public Items updateItem(@RequestBody Items items) {
 		return itemsService.updateItem(items);
 	}
-	@DeleteMapping(path="/deleteItem")
+	@DeleteMapping(path="/deleteItem/{id}")
 	public void deleteItem(@PathVariable("id") Integer id) {
 		itemsService.deleteItem(id);
 	}
